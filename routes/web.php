@@ -11,10 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/register-success', 'RegisterController@success');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/logout', function () {
+        Auth::logout();
+        return redirect()->route('index');
+    });
+
+    Route::post('/addpost', 'HomeController@addPost')->name('addpost');
+});

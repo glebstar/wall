@@ -23,7 +23,7 @@
             @endif
             @if(\Auth::check())
             <span class="nav-link ml-auto">{{ '@' . \Auth::user()->name }}</span>
-            <a class="nav-link" href="#">Выйти</a>
+            <a class="nav-link" href="/logout">Выйти</a>
             @endif
         </nav>
     </div>
@@ -47,11 +47,11 @@
         <div class="col-sm-3 offset-sm-1 blog-sidebar">
             <div class="sidebar-module sidebar-module-inset">
                 <h4>Статистика</h4>
-                <p>Всего постов: 4.</p>
-                <p>Дата первого: 26.09.2017.</p>
-                <p>Дата последнего: 27.09.2017.</p>
-                <p>Автор первого: Иван</p>
-                <p>Автор последнего: Петя</p>
+                <p>Всего постов: {{ $count_posts }}.</p>
+                <p>Дата первого: {{ $first_post_date }}.</p>
+                <p>Дата последнего: {{ $last_post_date }}.</p>
+                <p>Автор первого: {{ $first_author }}</p>
+                <p>Автор последнего: {{ $last_author }}</p>
             </div>
             <!-- /.blog-sidebar -->
 
